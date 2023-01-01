@@ -5,7 +5,7 @@ import Carousel from './Carousel'
 
 
 const BannerStyle = {
-  backgroundImage: "url(https://img.freepik.com/free-vector/abstract-realistic-technology-particle-background_23-2148420940.jpg?t=st=1672541037~exp=1672541637~hmac=1f889bf148aee562b6f277070c90d8af15d268fdc38bb4db1830a951412b9f28)",
+  backgroundImage: "url(https://github.com/piyush-eon/react-crypto-tracker/blob/master/public/banner2.jpg?raw=true)",
 
   height: "100vh",
   width: "100%",

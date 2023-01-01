@@ -13,7 +13,7 @@ function AllRoutes() {
         ></Route>
        
         <Route
-          path="/coin"
+          path="/coins/:id"
           element={
               <CoinPage />
           }

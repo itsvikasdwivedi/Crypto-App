@@ -11,7 +11,7 @@ const numberWithCommas = (x) => {
 
 const Carousel = () => {
   const [trending, setTrending] = useState([]);
-  const { currency } = CryptoState();
+  const { currency,symbol } = CryptoState();
 
   const fetchTrendingCoins = async () => {
     const { data } = await axios.get(TrendingCoins(currency));
@@ -21,7 +21,7 @@ const Carousel = () => {
     fetchTrendingCoins();
   }, [currency]);
 
-  console.log(trending);
+  // console.log(trending);
 
   const responsive = {
     0: {
@@ -67,7 +67,7 @@ const Carousel = () => {
         </span>
 
         <span style={{ fontSize: 22, fontWeight: 500 }}>
-          {numberWithCommas(coin?.current_price.toFixed(2))}
+         {symbol} {numberWithCommas(coin?.current_price.toFixed(2))}
         </span>
 
       </Link>

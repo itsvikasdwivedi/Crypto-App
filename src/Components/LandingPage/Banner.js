@@ -26,9 +26,10 @@ export const Banner = () => {
           <Typography variant='h2'
             style={{
               fontWeight: "bold",
-              marginBottom: 15,
+              // marginBottom: 15,
               fontFamily: "Montserrat",
-              color: "white"
+              color: "white",
+              // marginLeft: 20
             }}>
             Crypto Bhaskar
           </Typography>
@@ -38,7 +39,7 @@ export const Banner = () => {
               textTransform: "capitalize",
               fontFamily: "Montserrat",
               display: "flex",
-              height: "40%",
+              height: "10%",
               flexDirection: "column",
               justifyContent: "center",
               textAlign: "center"

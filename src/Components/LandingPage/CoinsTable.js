@@ -1,5 +1,6 @@
-import { Container, LinearProgress, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
-import axios from 'axios';
+import { Container,  LinearProgress, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';import axios from 'axios';
+import CssBaseline from '@mui/material/CssBaseline';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { CoinList } from '../../Config/api';
@@ -8,9 +9,9 @@ import { CryptoState } from '../../Context/CryptoContext';
 const CoinsTable = () => {
     const [coins, setCoins] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [search, setSearch] = useState();
+    const [search, setSearch] = useState("");
     const navigate = useNavigate()
-    const { currency } = CryptoState()
+    const { currency,symbol} = CryptoState()
 
     const fetchCoins = async () => {
         setLoading(true);
@@ -21,18 +22,28 @@ const CoinsTable = () => {
     }
 
     console.log(coins);
-    // useEffect(() => {
-    //     fetchCoins()
-    // }, [currency]);
+    useEffect(() => {
+        fetchCoins()
+    }, [currency]);
 
     const handleSearch = () => {
         return coins.filter((coin) => (
-            coin.name.setLowerCase().includes(search) || coin.symbol.setLowerCase().includes(search)
+            coin.name.toLowerCase().includes(search) || coin.symbol.toLowerCase().includes(search)
         ))
     }
+    const darkTheme = createTheme({
+        palette: {
+          mode: 'dark',
+        },
+      });
+
+      const numberWithCommas = (x) => {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      }
 
     return (
-        // <ThemeProvider >
+        <ThemeProvider theme={darkTheme}>
+              <CssBaseline />
         <Container style={{ textAlign: "center" }}>
             <Typography
                 variant='h4'
@@ -65,14 +76,24 @@ const CoinsTable = () => {
                                     ))}
                                 </TableRow>
                             </TableHead>
+
                             <TableBody>{handleSearch().map((row) => {
                                 const profit = row.price_change_percentage_24h > 0;
                                 return (
                                     <TableRow
                                         onClick={() => navigate(`/coins/${row.id}`)}
                                         key={row.name}
-                                        style={{}}>
-                                        <TableCell component="th" scope="row"
+                                        style={{
+                                            backgroundColor: "#16171a",
+                                            cursor: "pointer",
+                                            "&:hover" : {
+                                                backgroundColor: "#131111",
+                                            },
+                                            fontFamily: "Montserrat",
+                                        }}>
+                                        <TableCell 
+                                        component="th"
+                                         scope="row"
                                             style={{
                                                 display: "flex",
                                                 gap: 15
@@ -88,26 +109,45 @@ const CoinsTable = () => {
                                                     style={{ textTransform: "uppercase", fontSize: 22 }}>
                                                     {row.symbol}
                                                 </span>
-                                                <span></span>
+                                                <span style={{color: "darkgrey"}}>
+                                                    {row.name}
+                                                </span>
                                             </div>
                                         </TableCell>
+                                        <TableCell align='right'>
+                                        {symbol} {" "}{numberWithCommas(row.current_price.toFixed(2))}
+                                            </TableCell>
+                                        <TableCell
+                                        align='right'
+                                        style={{
+                                            color: profit > 0 ? "rgb(14 ,203 ,129)": "red",
+                                            fontWeight: 500
+                                        }}>
+                                            {profit && "+"}
+                                          {numberWithCommas(row.price_change_percentage_24h.toFixed(2))}%
+                                        </TableCell>
+                                        <TableCell align='right'>
+                                            {symbol} {" "}
+                                            {numberWithCommas(row.market_cap.toString().slice(0,-6)
+                                            )} {"Million"}
 
+                                        </TableCell>
                                     </TableRow>
                                 )
                             })}
-                                return (
+                                {/* return (
                                 <TableRow >
 
                                 </TableRow>
 
-                                )
+                                ) */}
                             </TableBody>
                         </Table>
                     )
                 }
             </TableContainer>
         </Container>
-        // </ThemeProvider>
+       </ThemeProvider>
     )
 }
 

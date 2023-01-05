@@ -1,4 +1,4 @@
-import { Container,  LinearProgress, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
+import { Container,  LinearProgress, Pagination, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';import axios from 'axios';
 import CssBaseline from '@mui/material/CssBaseline';
 import React, { useEffect, useState } from 'react'
@@ -10,6 +10,7 @@ const CoinsTable = () => {
     const [coins, setCoins] = useState([]);
     const [loading, setLoading] = useState(false);
     const [search, setSearch] = useState("");
+    const [page,setPage] = useState(1);
     const navigate = useNavigate()
     const { currency,symbol} = CryptoState()
 
@@ -77,7 +78,7 @@ const CoinsTable = () => {
                                 </TableRow>
                             </TableHead>
 
-                            <TableBody>{handleSearch().map((row) => {
+                            <TableBody>{handleSearch().slice((page-1)*10, (page-1 )*10 +10).map((row) => {
                                 const profit = row.price_change_percentage_24h > 0;
                                 return (
                                     <TableRow
@@ -135,17 +136,25 @@ const CoinsTable = () => {
                                     </TableRow>
                                 )
                             })}
-                                {/* return (
-                                <TableRow >
-
-                                </TableRow>
-
-                                ) */}
                             </TableBody>
                         </Table>
                     )
                 }
             </TableContainer>
+            <Pagination
+            style={{
+                padding: 20,
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+            }}
+            count={(handleSearch()?.length/10).toFixed(0)}
+            size="large" shape="rounded" 
+            onChange = {(_,value) => {
+                setPage(value);
+                window.scroll(0,450);
+            }}
+            />
         </Container>
        </ThemeProvider>
     )

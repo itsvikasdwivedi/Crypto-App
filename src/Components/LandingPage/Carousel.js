@@ -22,7 +22,6 @@ const Carousel = () => {
   }, [currency]);
 
   // console.log(trending);
-
   const responsive = {
     0: {
       items: 2,

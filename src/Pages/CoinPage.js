@@ -1,4 +1,4 @@
-import { createTheme, LinearProgress, Typography } from '@mui/material';
+import { Box, LinearProgress, Typography } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect } from 'react'
 import { useState } from 'react'
@@ -38,7 +38,7 @@ const CoinPage = () => {
   //     },
   //   },
   // });
-  
+
 
   if (!coin)
     return (
@@ -47,53 +47,55 @@ const CoinPage = () => {
 
 
   return (
-    <div
+    <Box
       style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center'
-      }} >
+        // display: 'flex',
+        // flexDirection: 'column',
+        // alignItems: 'center'
+      }}>
       <div
-      style={{
-        width : "30%",
-        display : "flex",
-        alignItems : "center",
-        marginTop: "25px",
-        borderRight : "2px solid darkgrey"
-      }}
+        style={{
+          borderRight : "2px solid darkgrey"
+          // width : "30%",
+          // display : "flex",
+          // alignItems : "center",
+          // marginTop: "25px",
+        }}
       >
         <img src={coin?.image.large}
           alt={coin?.name}
           height="200"
           style={{
-            marginBottom: 20
+            // marginBottom: 20
           }} />
 
         <Typography variant='h3' style={{
-          fontWeight: "bold",
-          marginBottom: 20,
-          fontFamily: "Monserrat"
+          // fontWeight: "bold",
+          // marginBottom: 20,
+          // fontFamily: "Monserrat"
         }}>
           {coin?.name}
         </Typography>
+
         <Typography variant='subtitle1'
           style={{
-            width: "100%",
-            fontFamily: "Monserrat",
-            padding: 25,
-            paddingBottom: 20,
-            paddingTop: 0,
-            textAlign: "center",
+            // width: "100%",
+            // fontFamily: "Monserrat",
+            // padding: 25,
+            // paddingBottom: 20,
+            // paddingTop: 0,
+            // textAlign: "center",
           }}>
           {coin?.description.en.split(". ")[0]}
         </Typography>
         {/* <CoinInfo /> */}
+
         <div style={
           {
-            alignSelf: "start",
-            padding : 25,
-            paddingTop: 20,
-            width: "100%",
+            // alignSelf: "start",
+            // padding : 25,
+            // paddingTop: 20,
+            // width: "100%",
             // [theme.breakpoints.down("md")]:{
             //   display: "flex",
             //   justifyContent : "space-around"
@@ -109,19 +111,21 @@ const CoinPage = () => {
         }>
           <span
             style={{
-              display: "flex"
+              // display: "flex"
             }}>
             <Typography variant='h5'>
               Rank:
             </Typography>
+
             &nbsp; &nbsp;
             <Typography variant='h5'
               style={{
-                fontFamily: "Monserrat"
+                // fontFamily: "Monserrat"
               }}>
               {coin?.market_cap_rank}
             </Typography>
           </span>
+
           <span
             style={{
               display: "flex"
@@ -153,17 +157,17 @@ const CoinPage = () => {
                 fontFamily: "Monserrat"
               }}>
               {symbol} {" "}
-              {(coin?.market_data.market_cap[currency.toLowerCase()]
+              {numberWithCommas(coin?.market_data.market_cap[currency.toLowerCase()]
                 .toString()
                 .slice(0, -6))}M
             </Typography>
           </span>
+
           <div />
 
         </div>
-
       </div>
-    </div>
+    </Box>
   )
 }
 

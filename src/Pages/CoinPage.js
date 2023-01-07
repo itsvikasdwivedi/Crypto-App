@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
+import CoinInfo from '../Components/CoinInfo';
 // import CoinInfo from '../Components/CoinInfo';
 import { SingleCoin } from '../Config/api';
 import { CryptoState } from '../Context/CryptoContext';
@@ -162,11 +163,9 @@ const CoinPage = () => {
                 .slice(0, -6))}M
             </Typography>
           </span>
-
-          <div />
-
         </div>
       </div>
+      <CoinInfo/>
     </Box>
   )
 }

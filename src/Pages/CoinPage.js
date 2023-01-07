@@ -18,7 +18,7 @@ const CoinPage = () => {
     const { data } = await axios.get(SingleCoin(id));
     setCoin(data);
   }
-  console.log(coin, "visible ");
+  // console.log(coin, "visible ");
 
   useEffect(() => {
     fetchCoin(coin);

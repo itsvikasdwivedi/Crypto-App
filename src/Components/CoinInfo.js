@@ -14,6 +14,7 @@ const CoinInfo = (coin) => {
   const fetchHistoricalData = async()=> {
     const {data} =await axios.get(HistoricalChart(coin.id,days,currency));
     sethistoricData(data.prices);
+    console.log("ye jinda hainn",fetchHistoricalData(data))
   }
 
   useEffect(() => {
@@ -43,7 +44,21 @@ const CoinInfo = (coin) => {
           <>
           <Line
           data={{
-            labels: historicData.map((coins))
+            labels: historicData.map((coin)=>{
+              let date = new Date(coin[0]);
+              let time =
+              date.getHours()>12 ?
+              `${date.getHours() -12}: ${date.getMinutes()} PM`
+              : `${date.getHours()}: ${date.getMinutes()} AM`;
+
+              return days===1 ? time : date.toLocaleDateString()
+            }),
+            datasets : [
+              {
+               data: historicData.map((coin)=>coin[1]),
+               label : `Price (Past ${days}Days) in ${currency}`
+              },
+            ]
           }}/>
           </>
         )}

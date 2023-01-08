@@ -22,7 +22,8 @@ const CoinsTable = () => {
         setLoading(false);
     }
 
-    console.log(coins);
+    console.log("coin data",coins);
+
     useEffect(() => {
         fetchCoins()
     }, [currency]);

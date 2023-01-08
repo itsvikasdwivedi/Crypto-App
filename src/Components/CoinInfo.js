@@ -1,5 +1,8 @@
-// import { CircularProgress, CssBaseline } from '@mui/material';
-// import { createTheme, ThemeProvider } from '@mui/system';
+import {
+  CircularProgress,
+  CssBaseline
+} from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import axios from 'axios';
 import React, {
   useEffect,
@@ -7,7 +10,8 @@ import React, {
 } from 'react'
 import { HistoricalChart } from '../Config/api';
 import { CryptoState } from '../Context/CryptoContext';
-import { Line } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2'
+// import { Line } from 'chart.js';
 
 const CoinInfo = ({ coin }) => {
   const [historicData, setHistoricData] = useState();
@@ -29,49 +33,57 @@ const CoinInfo = ({ coin }) => {
     fetchHistoricData();
   }, [currency, days]);
 
-  // const darkTheme = createTheme({
-  //   palette: {
-  //     mode: 'dark',
-  //   },
-  // });
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+    },
+  });
 
   return (
     // <ThemeProvider theme={darkTheme}>
-    //  <CssBaseline/>
-    <div>
-      {/* {
-        // !historicData ? (
-        //   <CircularProgress
-        //   style={{
-        //     color: 'gold'
-        //   }}
-        //   size={250}
-        //   thickness= {1}/>
-        // ):
-        (
-          <>
-          <Line
-          data={{
-            labels : historicData.map((coin)=>{
-              let date = new Date(coin[0]);
-              let time =
-              date.getHours()>12 ?
-              `${date.getHours() -12}: ${date.getMinutes()} PM`
-              : `${date.getHours()}: ${date.getMinutes()} AM`;
+    //  <CssBaseline />
+<>
+      <div>
+        {
+          !historicData ? (
+              <CircularProgress
+              style={{
+                color: 'gold'
+              }}
+              size={250}
+              thickness= {1}/>
+            ):
+          (
+            <>
+              <Line
 
-              return days===1 ? time : date.toLocaleDateString();
-            }),
-            datasets : [
-              {
-               data: historicData.map((coin)=>coin[0]),
-               label : `Price (Past ${days}Days) in ${currency}`
-              },
-            ]
-          }}/>
-          </>
-        )} */}
-      {/* </ThemeProvider> */}
-    </div>
+                data =
+                {{
+                  labels: historicData.map((coin) => {
+                    let date = new Date(coin[0]);
+                    console.log(date,"date bata rhi haii");
+                    let time =
+                      date.getHours() > 12 ?
+                        `${date.getHours() - 12}: ${date.getMinutes()} PM`
+                        : `${date.getHours()}: ${date.getMinutes()} AM`;
+                    console.log(time, "baar nhi BTA RHAA");
+                    return days === 1 ? time : date.toLocalDateString();   
+                  }),
+
+                  datasets: [
+                    {
+                      data: historicData.map((coin) => coin[1]),
+                      label: `Price (Past ${days}Days) in ${currency}`
+                    },
+                  ]
+                }}
+                
+              />
+            </>
+          )}
+      </div>
+      </>
+    // </ThemeProvider>
   )
 }
 

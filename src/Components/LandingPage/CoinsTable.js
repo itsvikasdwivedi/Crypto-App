@@ -1,5 +1,6 @@
 import { Container,  LinearProgress, Pagination, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
-import { ThemeProvider, createTheme } from '@mui/material/styles';import axios from 'axios';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import axios from 'axios';
 import CssBaseline from '@mui/material/CssBaseline';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
@@ -22,7 +23,7 @@ const CoinsTable = () => {
         setLoading(false);
     }
 
-    console.log("coin data",coins);
+    // console.log("coin data",coins);
 
     useEffect(() => {
         fetchCoins()

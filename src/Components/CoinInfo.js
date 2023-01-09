@@ -73,7 +73,7 @@ const CoinInfo = ({coin}) => {
                   datasets: [
                     {
                       data: historicData.map((coin) => coin[1]),
-                      label: `Price (Past ${days}Days) in ${currency}`
+                      // label: `Price (Past ${days}Days) in ${currency}`
                     },
                   ]
                 }}

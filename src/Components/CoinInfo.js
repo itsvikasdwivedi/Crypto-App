@@ -13,7 +13,7 @@ import { CryptoState } from '../Context/CryptoContext';
 import { Line } from 'react-chartjs-2'
 // import { Line } from 'chart.js';
 
-const CoinInfo = ({ coin }) => {
+const CoinInfo = ({coin}) => {
   const [historicData, setHistoricData] = useState();
   const [days, setdays] = useState(1);
 
@@ -61,12 +61,12 @@ const CoinInfo = ({ coin }) => {
                 {{
                   labels: historicData.map((coin) => {
                     let date = new Date(coin[0]);
-                    console.log(date,"date bata rhi haii");
+                    // console.log(date,"date bata rhi haii");
                     let time =
                       date.getHours() > 12 ?
                         `${date.getHours() - 12}: ${date.getMinutes()} PM`
                         : `${date.getHours()}: ${date.getMinutes()} AM`;
-                    console.log(time, "baar nhi BTA RHAA");
+                    // console.log(time, "baar nhi BTA RHAA");
                     return days === 1 ? time : date.toLocalDateString();   
                   }),
 

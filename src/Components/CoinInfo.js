@@ -1,4 +1,6 @@
+import Chart, { elements } from 'chart.js/auto';
 import {
+  Button,
   CircularProgress,
   CssBaseline
 } from '@mui/material';
@@ -11,11 +13,13 @@ import React, {
 import { HistoricalChart } from '../Config/api';
 import { CryptoState } from '../Context/CryptoContext';
 import { Line } from 'react-chartjs-2'
+import { chartDays } from '../Config/data';
+import SelectButton from './SelectButton';
 // import { Line } from 'chart.js';
 
 const CoinInfo = ({coin}) => {
   const [historicData, setHistoricData] = useState();
-  const [days, setdays] = useState(1);
+  const [days, setDays] = useState(1);
 
   const { currency } = CryptoState();
 
@@ -40,9 +44,9 @@ const CoinInfo = ({coin}) => {
   });
 
   return (
-    // <ThemeProvider theme={darkTheme}>
-    //  <CssBaseline />
-<>
+    <ThemeProvider theme={darkTheme}>
+     <CssBaseline />  
+        <>
       <div>
         {
           !historicData ? (
@@ -73,17 +77,45 @@ const CoinInfo = ({coin}) => {
                   datasets: [
                     {
                       data: historicData.map((coin) => coin[1]),
-                      // label: `Price (Past ${days}Days) in ${currency}`
+                      label: `Price (Past ${days}Days) in ${currency}`,
+                      borderColor : "#EEBC1D"
                     },
                   ]
                 }}
-                
+                options= {{
+                     elements: {
+                        point:{
+                          radius: 1,
+                        },
+                      }
+                }}
               />
+              <div
+              style={{
+                display: 'flex',
+                marginTop: 20,
+                justifyContent: 'space-around',
+                width: '100%'
+              }}
+              >
+                {chartDays.map((day) =>{
+                  return(
+                  <SelectButton
+                  key={day.value}
+                  onClick={()=>{setDays(day.value)}}
+                  selected= {day.value===days}
+                  >
+
+                    {day.label}
+                  </SelectButton>
+                  )
+                })}
+              </div>
             </>
           )}
       </div>
       </>
-    // </ThemeProvider>
+    </ThemeProvider>
   )
 }
 

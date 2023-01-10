@@ -1,6 +1,6 @@
 import React from 'react'
-import { Banner } from '../Components/LandingPage/Banner';
-import CoinsTable from '../Components/LandingPage/CoinsTable';
+import { Banner } from '../Components/Banner';
+import CoinsTable from '../Components/CoinsTable';
 
 const HomePage = () => {
   return (

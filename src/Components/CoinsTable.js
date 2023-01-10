@@ -4,8 +4,8 @@ import axios from 'axios';
 import CssBaseline from '@mui/material/CssBaseline';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { CoinList } from '../../Config/api';
-import { CryptoState } from '../../Context/CryptoContext';
+import { CoinList } from '../Config/api';
+import { CryptoState } from '../Context/CryptoContext';
 
 const CoinsTable = () => {
     const [coins, setCoins] = useState([]);

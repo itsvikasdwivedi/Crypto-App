@@ -5,19 +5,19 @@ import Carousel from './Carousel'
 
 
 const BannerStyle = {
-  backgroundImage: "url(https://images.unsplash.com/photo-1639322537228-f710d846310a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80)",
-
-  height: "100vh",
-  width: "100%",
+  backgroundImage: "url(https://img.freepik.com/free-vector/gradient-network-connection-background_23-2148865393.jpg?w=900&t=st=1673445311~exp=1673445911~hmac=8ce8cbec0a4735ea5df32d9a7e9615f20c3a7be59324b86ee7c1c7697d29b505)",
+  height: "85vh",
+  // width: "200%",
 }
 
 const BannerContent = {
   height: 400,
   display: "flex",
   flexDirection: "column",
-  paddingTop: 25,
+  // paddingTop: 25,
   justifyContent: "space-around",
 }
+
 export const Banner = () => {
   return (
     <div style={BannerStyle}>
@@ -26,25 +26,26 @@ export const Banner = () => {
           <Typography variant='h2'
             style={{
               fontWeight: "bold",
-              // marginBottom: 15,
+              marginBottom: 15,
               fontFamily: "Montserrat",
               color: "white",
-              // marginLeft: 20
+              textAlign: "center"
             }}>
             Crypto Bhaskar
           </Typography>
           <Typography variant='subtitle2'
             style={{
-              color: "white",
+              color: "gold",
+              fontSize: "30px",
               textTransform: "capitalize",
               fontFamily: "Montserrat",
-              display: "flex",
-              height: "10%",
-              flexDirection: "column",
-              justifyContent: "center",
               textAlign: "center"
+              // display: "flex",
+              // height: "10%",
+              // flexDirection: "column",
+              // justifyContent: "center",
             }}>
-            Get All The Information regarding your favorite Crypto
+            Get All The Information regarding your favourite Crypto
           </Typography>
         </div>
         <Carousel/>

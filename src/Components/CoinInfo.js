@@ -1,6 +1,5 @@
 import Chart, { elements } from 'chart.js/auto';
 import {
-  Button,
   CircularProgress,
   CssBaseline
 } from '@mui/material';
@@ -43,11 +42,23 @@ const CoinInfo = ({coin}) => {
     },
   });
 
+  
   return (
     <ThemeProvider theme={darkTheme}>
      <CssBaseline />  
         <>
-      <div>
+      <div 
+      style={{
+        width: '70%',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 25,
+        padding: 40
+
+      }}
+      >
         {
           !historicData ? (
               <CircularProgress
@@ -71,13 +82,13 @@ const CoinInfo = ({coin}) => {
                         `${date.getHours() - 12}: ${date.getMinutes()} PM`
                         : `${date.getHours()}: ${date.getMinutes()} AM`;
                     // console.log(time, "baar nhi BTA RHAA");
-                    return days === 1 ? time : date.toLocalDateString();   
+                    return days === 1 ? time : date.toLocaleDateString();   
                   }),
 
                   datasets: [
                     {
                       data: historicData.map((coin) => coin[1]),
-                      label: `Price (Past ${days}Days) in ${currency}`,
+                      label: `Price Iin Past ${days} Days In ${currency}`,
                       borderColor : "#EEBC1D"
                     },
                   ]
@@ -90,6 +101,7 @@ const CoinInfo = ({coin}) => {
                       }
                 }}
               />
+
               <div
               style={{
                 display: 'flex',
@@ -103,9 +115,8 @@ const CoinInfo = ({coin}) => {
                   <SelectButton
                   key={day.value}
                   onClick={()=>{setDays(day.value)}}
-                  selected= {day.value===days}
+                  selected={day.value === days}
                   >
-
                     {day.label}
                   </SelectButton>
                   )

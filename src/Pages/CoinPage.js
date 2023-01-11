@@ -1,10 +1,9 @@
-import { Box, LinearProgress, Typography } from '@mui/material';
+import { LinearProgress, Typography } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import CoinInfo from '../Components/CoinInfo';
-// import CoinInfo from '../Components/CoinInfo';
 import { SingleCoin } from '../Config/api';
 import { CryptoState } from '../Context/CryptoContext';
 
@@ -48,44 +47,46 @@ const CoinPage = () => {
 
 
   return (
-    <Box
+    <div
       style={{
-        // display: 'flex',
+        display: 'flex',
         // flexDirection: 'column',
         // alignItems: 'center'
       }}>
       <div
         style={{
-          borderRight : "2px solid darkgrey"
-          // width : "30%",
-          // display : "flex",
-          // alignItems : "center",
-          // marginTop: "25px",
+          borderRight: "2px solid darkgrey",
+          width : "30%",
+          display : "flex",
+          flexDirection: "column",
+          alignItems : "center",
+          marginTop: "25px",
         }}
       >
         <img src={coin?.image.large}
           alt={coin?.name}
           height="200"
           style={{
-            // marginBottom: 20
+            marginBottom: 20,
           }} />
 
         <Typography variant='h3' style={{
-          // fontWeight: "bold",
-          // marginBottom: 20,
-          // fontFamily: "Monserrat"
+          fontWeight: "bold",
+          fontFamily: "Montserrat",
+          textAlign: "center"
         }}>
           {coin?.name}
         </Typography>
 
         <Typography variant='subtitle1'
           style={{
-            // width: "100%",
-            // fontFamily: "Monserrat",
-            // padding: 25,
-            // paddingBottom: 20,
-            // paddingTop: 0,
-            // textAlign: "center",
+            width: "100%",
+            fontFamily: "Montserrat",
+            padding: 25,
+            paddingBottom: 20,
+            paddingTop: 0,
+            textAlign: "justify",
+            // justifyContent: "space-around"
           }}>
           {coin?.description.en.split(". ")[0]}
         </Typography>
@@ -93,10 +94,10 @@ const CoinPage = () => {
 
         <div style={
           {
-            // alignSelf: "start",
-            // padding : 25,
-            // paddingTop: 20,
-            // width: "100%",
+            alignSelf: "start",
+            padding : 25,
+            paddingTop: 20,
+            width: "100%",
             // [theme.breakpoints.down("md")]:{
             //   display: "flex",
             //   justifyContent : "space-around"
@@ -112,17 +113,22 @@ const CoinPage = () => {
         }>
           <span
             style={{
-              // display: "flex"
+              display: "flex"
             }}>
-            <Typography variant='h5'>
+            <Typography variant='h5'
+             style={{
+              fontFamily: "Montserrat"
+            }}
+            >
               Rank:
             </Typography>
 
             &nbsp; &nbsp;
             <Typography variant='h5'
               style={{
-                // fontFamily: "Monserrat"
-              }}>
+                fontFamily: "Montserrat"
+              }}
+              >
               {coin?.market_cap_rank}
             </Typography>
           </span>
@@ -131,13 +137,16 @@ const CoinPage = () => {
             style={{
               display: "flex"
             }}>
-            <Typography variant='h5'>
+            <Typography variant='h5'
+             style={{
+              fontFamily: "Montserrat"
+            }}>
               Current Price:
             </Typography>
             &nbsp; &nbsp;
             <Typography variant='h5'
               style={{
-                fontFamily: "Monserrat"
+                fontFamily: "Montserrat"
               }}>
               {symbol} {" "}
               {numberWithCommas(coin?.market_data.current_price[currency.toLowerCase()]
@@ -149,13 +158,16 @@ const CoinPage = () => {
             style={{
               display: "flex"
             }}>
-            <Typography variant='h5'>
+            <Typography variant='h5'
+             style={{
+              fontFamily: "Montserrat"
+            }}>
               Market Cap:{" "}
             </Typography>
             &nbsp; &nbsp;
             <Typography variant='h5'
               style={{
-                fontFamily: "Monserrat"
+                fontFamily: "Montserrat"
               }}>
               {symbol} {" "}
               {numberWithCommas(coin?.market_data.market_cap[currency.toLowerCase()]
@@ -165,8 +177,8 @@ const CoinPage = () => {
           </span>
         </div>
       </div>
-      <CoinInfo coin ={coin}/>
-    </Box>
+      <CoinInfo coin={coin} />
+    </div>
   )
 }
 

@@ -36,9 +36,7 @@ const Carousel = () => {
     return (
       <Link to={`/coins/${coin.id}`}
         style={{
-          // height: "50%",
-          // display: 'flex',
-          // alignItems: 'center',
+          height: "50%",
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',

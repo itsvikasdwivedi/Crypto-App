@@ -23,13 +23,14 @@ const CoinPage = () => {
   const matches = useMediaQuery('(min-width:600px)')
  
     const maxScreen = {
-      display: 'flex'
+      display: 'flex',
+  
     }
  
     const minScreen = {
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center'
+      alignItems: 'center',
     }
     
     const maxSidebar={

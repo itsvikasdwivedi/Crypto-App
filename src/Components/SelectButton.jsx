@@ -17,8 +17,8 @@ const SelectButton = ({children,selected,onClick}) => {
       backgroundColor: selected ? 'gold' : '',
       color: selected ? 'black' : '',
       fontWeight: selected ? 700: 500,
-      widht: '22%',
-      margin: 5
+      widht: '100%',
+      // margin: 5
     }}
     >
       {children}</span>

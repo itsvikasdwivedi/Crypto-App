@@ -1,11 +1,13 @@
 import { LinearProgress, Typography } from '@mui/material';
 import axios from 'axios';
+import parse from 'html-react-parser';
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import CoinInfo from '../Components/CoinInfo';
 import { SingleCoin } from '../Config/api';
 import { CryptoState } from '../Context/CryptoContext';
+
 
 const CoinPage = () => {
   const [coin, setCoin] = useState();
@@ -88,7 +90,7 @@ const CoinPage = () => {
             textAlign: "justify",
             // justifyContent: "space-around"
           }}>
-          {coin?.description.en.split(". ")[0]}
+          {parse(coin?.description.en.split(". ")[0])}
         </Typography>
         {/* <CoinInfo /> */}
 

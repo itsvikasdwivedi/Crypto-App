@@ -23,10 +23,10 @@ export const Banner = () => {
     <div style={BannerStyle}>
       <Container sx={BannerContent} >
         <div>
-          <Typography variant='h2'
+          <Typography variant='h3'
             style={{
               fontWeight: "bold",
-              marginBottom: 15,
+              // marginBottom: 15,
               fontFamily: "Montserrat",
               color: "white",
               textAlign: "center"
@@ -36,14 +36,10 @@ export const Banner = () => {
           <Typography variant='subtitle2'
             style={{
               color: "gold",
-              fontSize: "30px",
+              fontSize: "18px",
               textTransform: "capitalize",
               fontFamily: "Montserrat",
               textAlign: "center"
-              // display: "flex",
-              // height: "10%",
-              // flexDirection: "column",
-              // justifyContent: "center",
             }}>
             Get All The Information regarding your favourite Crypto
           </Typography>

@@ -1,5 +1,5 @@
 import { LinearProgress, Typography, useMediaQuery} from '@mui/material';
-import { fontSize } from '@mui/system';
+
 import axios from 'axios';
 import parse from 'html-react-parser';
 import React, { useEffect } from 'react'

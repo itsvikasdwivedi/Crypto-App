@@ -1,7 +1,8 @@
 import Chart, { elements } from 'chart.js/auto';
 import {
   CircularProgress,
-  CssBaseline
+  CssBaseline,
+  useMediaQuery
 } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import axios from 'axios';
@@ -21,6 +22,8 @@ const CoinInfo = ({coin}) => {
   const [days, setDays] = useState(1);
 
   const { currency } = CryptoState();
+
+  const matches = useMediaQuery('(min-width:600px)')
 
   const fetchHistoricData = async () => {
 
@@ -48,16 +51,19 @@ const CoinInfo = ({coin}) => {
      <CssBaseline />  
         <>
       <div 
-      style={{
-        width: '70%',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 25,
-        padding: 40
-
-      }}
+      style={ {
+        ...matches ?{
+          width: '70%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: "20px"
+        }:{
+          width: "100%",
+        }
+      }
+    }
       >
         {
           !historicData ? (

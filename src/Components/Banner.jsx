@@ -5,7 +5,7 @@ import Carousel from './Carousel'
 
 
 const BannerStyle = {
-  backgroundImage: "url(https://img.freepik.com/free-vector/gradient-network-connection-background_23-2148865393.jpg?w=900&t=st=1673445311~exp=1673445911~hmac=8ce8cbec0a4735ea5df32d9a7e9615f20c3a7be59324b86ee7c1c7697d29b505)",
+  backgroundImage: "url(https://mcdn.wallpapersafari.com/medium/91/61/Rb7TmX.jpg)",
   height: "50%",
 }
 

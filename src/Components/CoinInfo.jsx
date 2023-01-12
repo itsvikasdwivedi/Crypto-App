@@ -29,7 +29,7 @@ const CoinInfo = ({coin}) => {
     setHistoricData(data.prices);
   }
 
-  console.log("Fetching youuu", historicData)
+  // console.log("Fetching youuu", historicData)
   // console.log("ye jinda hainn",historicData);
 
   useEffect(() => {

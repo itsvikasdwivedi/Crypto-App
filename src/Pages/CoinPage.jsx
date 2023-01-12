@@ -1,4 +1,5 @@
-import { LinearProgress, Typography } from '@mui/material';
+import { LinearProgress, Typography, useMediaQuery} from '@mui/material';
+import { fontSize } from '@mui/system';
 import axios from 'axios';
 import parse from 'html-react-parser';
 import React, { useEffect } from 'react'
@@ -12,14 +13,51 @@ import { CryptoState } from '../Context/CryptoContext';
 const CoinPage = () => {
   const [coin, setCoin] = useState();
   const { id } = useParams();
-
+  
   const { currency, symbol } = CryptoState();
-
+  
   const fetchCoin = async () => {
     const { data } = await axios.get(SingleCoin(id));
     setCoin(data);
   }
-  // console.log(coin, "visible ");
+  const matches = useMediaQuery('(min-width:600px)')
+ 
+    const maxScreen = {
+      display: 'flex'
+    }
+ 
+    const minScreen = {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center'
+    }
+    
+    const maxSidebar={
+      borderRight: "2px solid darkgrey",
+          width : "30%",
+          display : "flex",
+          flexDirection: "column",
+          alignItems : "center",
+          marginTop: "25px",
+    }
+    const minSideBar= {
+      borderRight: "2px solid darkgrey",
+          display : "flex",
+          flexDirection: "column",
+          alignItems : "center",
+          marginTop: 25 ,
+      width: "100%"
+    }
+    const marketDatamax={
+      alignSelf: "start",
+      padding : 25,
+      paddingTop: 20,
+      width: "100%"
+    }
+    const marketDatamin={
+      alignItems : "start",
+      fontSize: 1
+    }
 
   useEffect(() => {
     fetchCoin(coin);
@@ -29,40 +67,20 @@ const CoinPage = () => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
   }
 
-  // const theme = createTheme({
-  //   breakpoints: {
-  //     values: {
-  //       xs: 0,
-  //       sm: 600,
-  //       md: 900,
-  //       lg: 1200,
-  //       xl: 1536,
-  //     },
-  //   },
-  // });
-
-
   if (!coin)
     return (
       <LinearProgress style={{ backgroundColor: "goldenrod" }} />
     )
 
-
   return (
     <div
       style={{
-        display: 'flex',
-        // flexDirection: 'column',
-        // alignItems: 'center'
+         ...matches ? maxScreen : minScreen
       }}>
+
       <div
         style={{
-          borderRight: "2px solid darkgrey",
-          width : "30%",
-          display : "flex",
-          flexDirection: "column",
-          alignItems : "center",
-          marginTop: "25px",
+          ...matches ? maxSidebar: minSideBar
         }}
       >
         <img src={coin?.image.large}
@@ -96,21 +114,7 @@ const CoinPage = () => {
 
         <div style={
           {
-            alignSelf: "start",
-            padding : 25,
-            paddingTop: 20,
-            width: "100%",
-            // [theme.breakpoints.down("md")]:{
-            //   display: "flex",
-            //   justifyContent : "space-around"
-            // },
-            // [theme.breakpoints.down("md")]:{
-            //   flexDirection: "column",
-            //   alignIntems: "center"
-            // },
-            // [theme.breakpoints.down("xs")]:{
-            //   alignItems : "start"
-            // }
+           ...matches ? marketDatamax : marketDatamin
           }
         }>
           <span

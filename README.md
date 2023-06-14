@@ -16,7 +16,7 @@
 
 - React.js
 - Material UI
-- Redux
+- Context API
 - Gecko API
 - React Chart JS
 
